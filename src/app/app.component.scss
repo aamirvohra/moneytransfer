@@ -1,0 +1,23 @@
+.parent-container {
+
+}
+
+.app-container {
+  margin: 10px 20px;
+  background-image: url("./../assets/background.jpg");
+}
+
+.header {
+  margin: 20px 50px 10px;
+  height: 70px;
+  background-color: white;
+  background-image: url("../assets/logo.jpg");
+  background-repeat: no-repeat;
+}
+
+hr {
+  display: block;
+  border: 0;
+  border-bottom: 2px solid orange;
+  height: 2px;
+}

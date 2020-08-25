@@ -1,0 +1,34 @@
+<div class="history-container">
+
+  <div class="transaction-filter">
+    <form [formGroup]="filterForm">
+      <input type="text" class="search" placeholder="Search by typing" formControlName="search">
+    </form>
+  </div>
+
+  <div (click)="sortBy('transactionDate')">Date</div>
+  <div (click)="sortBy('merchant')">Beneficiary</div>
+  <div (click)="sortBy('amount')">Amount</div>
+
+  <div class="item" *ngFor="let transaction of transactions$ | async; let i = index">
+    <div class="color-scheme" [ngStyle]="{'background-color': '#' + colorChest[i] }">
+      &nbsp;
+    </div>
+    <div class="date">
+      <span>{{ transaction.displayDate }}</span>
+    </div>
+
+    <div class="logo">
+      <img [src]=transaction.merchantLogo alt="">
+    </div>
+
+    <div class="merchant-info">
+      <span class="name">{{ transaction.merchant }}</span><br>
+      <span class="type">{{ transaction.transactionType }}</span>
+    </div>
+
+    <div class="amount d-flex justify-content-end">
+      <span>-${{ transaction.amount }}</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="transfer-container">
+  <form [formGroup]="transferForm">
+    <div class="form-group">
+      <label for="from">From Account:</label>
+      <input type="text" class="form-control" formControlName="from" id="from">
+    </div>
+
+    <div class="form-group">
+      <label for="to">To Account:</label>
+      <input type="text" class="form-control" formControlName="to" id="to">
+    </div>
+
+    <div class="form-group">
+      <label for="amount">Amount:</label>
+      <input type="text" class="form-control" formControlName="amount" [placeholder]="!hasAmount() ? '0.00' : ''" id="amount">
+    </div>
+
+    <div *ngIf="!isPreview.getValue()" class="submit d-flex justify-content-end">
+      <button type="button" class="btn btn-primary" [disabled]="!transferForm.valid" (click)="processTransaction()">Submit</button>
+    </div>
+
+    <div *ngIf="isPreview.getValue()" class="submit d-flex justify-content-end">
+      <button type="button" class="btn btn-primary" (click)="confirmTransaction()">Transfer</button>
+    </div>
+  </form>
+</div>
+

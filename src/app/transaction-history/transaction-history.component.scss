@@ -1,0 +1,64 @@
+.history-container {
+  background-color: white;
+
+  .item {
+    display: flex;
+    justify-content: space-between;
+    border: 1.5px solid grey;
+    border-top: none;
+    border-left: none;
+
+    &:first-child {
+      border-top: 1.5px solid grey;
+    }
+  }
+
+  .date, .amount {
+    width: 20%;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .date {
+    padding: 15px;
+  }
+
+  .amount {
+    font-weight: bolder;
+  }
+
+  .color-scheme {
+    width: 1%;
+  }
+
+  .logo {
+    width: 10%;
+    padding: 10px;
+    text-align: center;
+    img {
+      width: 50%;
+      border: none;
+    }
+  }
+
+  .merchant-info {
+    width: 55%;
+    padding: 10px;
+    text-align: left;
+
+    .name {
+      font-weight: bold;
+    }
+
+    .type {
+      font-size: 0.8em;
+    }
+  }
+
+  .transaction-filter {
+    .search {
+      border: 0;
+      border-bottom: 1px solid;
+    }
+  }
+}
