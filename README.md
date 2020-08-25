@@ -25,7 +25,7 @@
 
 ``ng serve``
 
-# Application Strcuture
+# Application Structure
 
 - Banking component is parent component of `transfer` and 'transaction-history-component.ts'
 - On app init user, user are redirected to banking component
