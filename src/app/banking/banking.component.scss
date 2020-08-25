@@ -1,11 +1,13 @@
 .banking-container {
   display: flex;
+  padding: 4em;
+  justify-content: space-between;
 
   .transfer-container {
-    width: 25%;
+    width: 24%;
   }
 
   .transfer-history-container {
-    width: 75%;
+    width: 74%;
   }
 }

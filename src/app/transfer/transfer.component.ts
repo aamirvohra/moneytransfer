@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { tap } from 'rxjs/operators';
 import * as AppAction from '../store/actions';
 import { Transaction } from '../model/transaction';
+import { formatCurrency } from '@angular/common';
 
 @Component({
   selector: 'app-transfer',
@@ -29,7 +30,7 @@ export class TransferComponent implements OnInit {
       to: ['', Validators.required],
       amount: [null, [
           Validators.required,
-          Validators.pattern("^[0-9]*$"),
+          Validators.pattern("\\d+\\.?\\d+$"),
       ]]
     });
 
@@ -56,7 +57,7 @@ export class TransferComponent implements OnInit {
 
   private setAccountType() {
     this.transferForm.get('from').setValue(
-      this.userAccountInfo.accountType + (this.userAccountInfo.accountNumber));
+      `${this.userAccountInfo.accountType}  ${(this.userAccountInfo.accountNumber)} - $(${formatCurrency(this.userAccountInfo.balance, 'en', '','CAD', '2.2-2')})`);
   }
 
   hasAmount() {

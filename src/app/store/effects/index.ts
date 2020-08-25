@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as AppActions from '../actions';
-import { catchError, map, mergeMap } from 'rxjs/operators';
+import { catchError, map, mergeMap, switchMap, tap } from 'rxjs/operators';
 import { UserService } from '../../service/user.service';
 import { TransactionService } from '../../service/transaction.service';
-import { of } from 'rxjs';
+import { of, pipe } from 'rxjs';
 
 @Injectable()
 export class AppEffects {
@@ -16,8 +16,6 @@ export class AppEffects {
     ))
   ));
 
-
-
   getTransactions$ = createEffect(() => this.actions$.pipe(
     ofType(AppActions.getTransactionList),
     mergeMap(action => this.transactionService.getTransactionList().pipe(
@@ -25,10 +23,11 @@ export class AppEffects {
       catchError(error => of(error))
     ))
   ));
-  //
-  // filterTransactions$ = createEffect(() => this.actions$.pipe())
-  //
-  // sort = createEffect(() => this.actions$.pipe())
+
+  onDebit$ = createEffect(() => this.actions$.pipe(
+    ofType(AppActions.debit),
+    switchMap(action => of(AppActions.deduceAccountBalance({transaction: action.transaction})))
+  ))
 
   constructor(private actions$: Actions,
               private userService: UserService,

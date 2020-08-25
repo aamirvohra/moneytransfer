@@ -1,0 +1,10 @@
+{
+  "transfer": {
+    "header": "Make a Transfer - FR",
+    "from": "From Account -FR",
+    "to": "To Account - FR",
+    "amount": "Amount - FR",
+    "submit": "Submit - FR",
+    "transfer": "Transfer - FR"
+  }
+}

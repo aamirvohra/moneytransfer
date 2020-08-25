@@ -1,34 +1,54 @@
 <div class="history-container">
+  <div class="section-header recent-transactions">Recent Transaction</div>
 
-  <div class="transaction-filter">
-    <form [formGroup]="filterForm">
-      <input type="text" class="search" placeholder="Search by typing" formControlName="search">
-    </form>
-  </div>
+  <div class="history-content">
+    <div class="transaction-filter">
+      <div class="filter-input">
+        <form [formGroup]="filterForm">
+          <input type="text" class="search" placeholder="Search by typing" formControlName="search">
+        </form>
+      </div>
 
-  <div (click)="sortBy('transactionDate')">Date</div>
-  <div (click)="sortBy('merchant')">Beneficiary</div>
-  <div (click)="sortBy('amount')">Amount</div>
-
-  <div class="item" *ngFor="let transaction of transactions$ | async; let i = index">
-    <div class="color-scheme" [ngStyle]="{'background-color': '#' + colorChest[i] }">
-      &nbsp;
+      <div class="sort-items">
+        <div class="item">Sort by</div>
+        <div class="item" [ngClass]="{'sort' : (sortBy$ | async) === 'transactionDate',
+          'desc': (sortOrder$ | async) === 1,
+          'asc': (sortOrder$ | async) === 0
+          }"
+             (click)="onSort('transactionDate')">DATE</div>
+        <div class="item" [ngClass]="{'sort' : (sortBy$ | async) === 'merchant',
+          'desc': (sortOrder$ | async) === 1,
+          'asc': (sortOrder$ | async) === 0
+          }"
+             (click)="onSort('merchant')">BENEFICIARY</div>
+        <div class="item" [ngClass]="{'sort' : (sortBy$ | async) === 'amount',
+          'desc': (sortOrder$ | async) === 1,
+          'asc': (sortOrder$ | async) === 0
+          }"
+             (click)="onSort('amount')">AMOUNT</div>
+      </div>
     </div>
-    <div class="date">
-      <span>{{ transaction.displayDate }}</span>
-    </div>
 
-    <div class="logo">
-      <img [src]=transaction.merchantLogo alt="">
-    </div>
+    <div class="list-item" *ngFor="let transaction of transactions$ | async; let i = index">
+      <div class="color-scheme" [ngStyle]="{'background-color': '#' + colorChest[i] }">
+        &nbsp;
+      </div>
+      <div class="date">
+        <span>{{ transaction.displayDate }}</span>
+      </div>
 
-    <div class="merchant-info">
-      <span class="name">{{ transaction.merchant }}</span><br>
-      <span class="type">{{ transaction.transactionType }}</span>
-    </div>
+      <div class="logo">
+        <img [src]=transaction.merchantLogo alt="">
+      </div>
 
-    <div class="amount d-flex justify-content-end">
-      <span>-${{ transaction.amount }}</span>
+      <div class="merchant-info">
+        <span class="name">{{ transaction.merchant }}</span><br>
+        <span class="type">{{ transaction.transactionType }}</span>
+      </div>
+
+      <div class="amount d-flex justify-content-end">
+        <span>-{{ transaction.amount | currency: 'CAD' : 'symbol-narrow' : '2.2-2':'en' }}</span>
+      </div>
     </div>
   </div>
 </div>

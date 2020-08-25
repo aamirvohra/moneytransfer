@@ -12,7 +12,7 @@ export const getSortOrder = (state: AppState) => {
   return state.transactionHistory.transactionSortOrder;
 }
 
-export const sortBy = (state: AppState) => {
+export const getSortBy = (state: AppState) => {
   return state.transactionHistory.sortBy;
 }
 

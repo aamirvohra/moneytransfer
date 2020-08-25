@@ -21,6 +21,11 @@ export const debit = createAction(
   props<{transaction: Transaction}>()
 );
 
+export const deduceAccountBalance = createAction(
+  'Deduce Account Balance',
+  props<{transaction: Transaction}>()
+)
+
 export const getTransactionList = createAction(
   'Fetch Transactions',
 );

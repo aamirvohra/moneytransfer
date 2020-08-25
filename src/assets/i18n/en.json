@@ -1,0 +1,10 @@
+{
+  "transfer": {
+    "header": "Make a Transfer",
+    "from": "From Account",
+    "to": "To Account",
+    "amount": "Amount",
+    "submit": "Submit",
+    "transfer": "Transfer"
+  }
+}

@@ -3,8 +3,8 @@
 }
 
 .app-container {
-  margin: 10px 20px;
   background-image: url("./../assets/background.jpg");
+  background-position: left bottom;
 }
 
 .header {
@@ -20,4 +20,5 @@ hr {
   border: 0;
   border-bottom: 2px solid orange;
   height: 2px;
+  margin-bottom: 0;
 }

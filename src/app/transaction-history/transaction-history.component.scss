@@ -1,16 +1,33 @@
 .history-container {
   background-color: white;
+  padding-bottom: 15px;
 
-  .item {
+  .section-header {
+    &:before {
+      content: "";
+      background-image: url("/assets/icons/briefcase.png");
+      //background-color: transparent;
+      background-color: #067b9e;
+      background-repeat: no-repeat;
+      background-blend-mode: multiply;
+      display: inline-block;
+      position: absolute;
+      left: 10px;
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .history-content {
+    padding: 15px;
+  }
+
+  .list-item {
     display: flex;
     justify-content: space-between;
     border: 1.5px solid grey;
     border-top: none;
     border-left: none;
-
-    &:first-child {
-      border-top: 1.5px solid grey;
-    }
   }
 
   .date, .amount {
@@ -56,9 +73,65 @@
   }
 
   .transaction-filter {
-    .search {
-      border: 0;
-      border-bottom: 1px solid;
+    display: flex;
+    padding: 25px;
+    padding-right: 0;
+    font-size: 0.8em;
+    border-bottom: 1.5px solid grey;
+
+    .filter-input {
+      width: 50%;
+
+      .search {
+        border: 0;
+        border-bottom: 1px solid;
+        width: 100%;
+        padding-top: 5px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+      }
+    }
+  }
+
+  .sort-items {
+    display: flex;
+    width: 60%;
+    align-items: flex-end;
+    justify-content: flex-end;
+
+    .sort {
+      &.desc {
+        &:after {
+          content: "\25bc";
+          color:gray;
+          position: relative;
+          left: 5px;
+        }
+      }
+
+      &.asc {
+        &:after {
+          content: "\25B2";
+          color:gray;
+          position: relative;
+          left: 5px;
+        }
+      }
+    }
+
+    .item {
+      width: 25%;
+      text-align: center;
+      border: 1px solid grey;
+      padding: 5px 10px;
+      font-weight: 400;
+
+      &:first-child {
+        border: 0;
+        text-align: right;
+        font-weight: bold;
+        padding-left: 20px;
+      }
     }
   }
 }

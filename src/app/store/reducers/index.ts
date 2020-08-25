@@ -50,17 +50,16 @@ const transactionReducer = createReducer(
     return { ...state, transactions: filter(state.transactionBackup, filterVal) }
   }),
   on(Actions.sortTransactions, (state, { sortBy  }) => {
-    // if sortBy key is same, that implies sortOrder is being toggled
     let sortOrder = state.transactionSortOrder;
 
+    // if sortBy key is same, that implies sortOrder is being toggled
     if (sortBy === state.sortBy) {
       sortOrder = sortOrder === SortOrder.desc ? SortOrder.asc : SortOrder.desc;
     }
 
-    console.log(sortBy, sortOrder, state.transactionSortOrder);
-
     return { ...state,
       transactionSortOrder: sortOrder,
+      sortBy: sortBy,
       transactions: sort(state.transactions, sortBy, sortOrder) };
   })
 );
@@ -68,7 +67,8 @@ const transactionReducer = createReducer(
 function sort(transactions: Array<Transaction>,
               sortBy: string,
               sortOrder: SortOrder): Array<Transaction> {
-  return transactions.sort(
+  const cloneTrans = [...transactions];
+  return cloneTrans.sort(
     (l,r) => {
       return l[sortBy] > r[sortBy] ? (sortOrder === SortOrder.asc ? 1 : -1) : l[sortBy] < r[sortBy] ? (sortOrder === SortOrder.asc ? -1 : 1) : 0;
     }
@@ -107,6 +107,11 @@ const userAccountReducer = createReducer(
   userAccountInitState,
   on(Actions.getUserAccountsInfoSuccess, (state, { userAccountInfo  }) => {
     return { ...state,  userAccountInfo: userAccountInfo}
+  }),
+  on(Actions.deduceAccountBalance, (state, { transaction }) => {
+    const userAccountInfo: UserAccountInfo = { ...state.userAccountInfo };
+    userAccountInfo.balance = userAccountInfo.balance - transaction.amount;
+    return { ...state, userAccountInfo: userAccountInfo }
   })
 );
 
