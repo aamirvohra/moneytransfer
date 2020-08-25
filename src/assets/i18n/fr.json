@@ -1,10 +1,16 @@
 {
   "transfer": {
-    "header": "Make a Transfer - FR",
-    "from": "From Account -FR",
-    "to": "To Account - FR",
-    "amount": "Amount - FR",
-    "submit": "Submit - FR",
-    "transfer": "Transfer - FR"
+    "header": "Effectuer un transfert",
+    "from": "DU COMPTE",
+    "to": "ESTIMER",
+    "amount": "Montant",
+    "submit": "Soumettre",
+    "transfer": "Transfert"
+  },
+  "history": {
+    "filter_placeHolder": "Rechercher en tapant",
+    "date": "DATE",
+    "beneficiary": "BÉNÉFICIAIRE",
+    "amount": "MONTANT"
   }
 }

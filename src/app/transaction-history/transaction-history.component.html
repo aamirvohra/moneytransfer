@@ -5,7 +5,7 @@
     <div class="transaction-filter">
       <div class="filter-input">
         <form [formGroup]="filterForm">
-          <input type="text" class="search" placeholder="Search by typing" formControlName="search">
+          <input type="text" class="search" placeholder="{{ 'history.filter_placeHolder' | translate }}" formControlName="search">
         </form>
       </div>
 
@@ -15,17 +15,17 @@
           'desc': (sortOrder$ | async) === 1,
           'asc': (sortOrder$ | async) === 0
           }"
-             (click)="onSort('transactionDate')">DATE</div>
+             (click)="onSort('transactionDate')">{{ 'history.date' | translate }}</div>
         <div class="item" [ngClass]="{'sort' : (sortBy$ | async) === 'merchant',
           'desc': (sortOrder$ | async) === 1,
           'asc': (sortOrder$ | async) === 0
           }"
-             (click)="onSort('merchant')">BENEFICIARY</div>
+             (click)="onSort('merchant')">{{ 'history.beneficiary' | translate }}</div>
         <div class="item" [ngClass]="{'sort' : (sortBy$ | async) === 'amount',
           'desc': (sortOrder$ | async) === 1,
           'asc': (sortOrder$ | async) === 0
           }"
-             (click)="onSort('amount')">AMOUNT</div>
+             (click)="onSort('amount')">{{ 'history.amount' | translate }}</div>
       </div>
     </div>
 

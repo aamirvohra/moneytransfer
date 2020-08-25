@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "bb-money-transfer-app"
+  },
+  "targets": {
+    "bb-money-transfer-app": {
+      "hosting": {
+        "backbase": [
+          "bb-money-transfer-app"
+        ]
+      }
+    }
+  }
+}

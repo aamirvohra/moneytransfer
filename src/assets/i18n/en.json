@@ -6,5 +6,11 @@
     "amount": "Amount",
     "submit": "Submit",
     "transfer": "Transfer"
+  },
+  "history": {
+    "filter_placeHolder": "Search by typing",
+    "date": "DATE",
+    "beneficiary": "BENEFICIARY",
+    "amount": "AMOUNT"
   }
 }
